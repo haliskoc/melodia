@@ -45,9 +45,9 @@ const AMBIENT_SOUNDS = [
   { id: 'clock', label: 'Clock', icon: '⏰', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/clock.mp3' },
   { id: 'typewriter', label: 'Typewriter', icon: '⌨️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/typewriter.mp3' },
   { id: 'purr', label: 'Cat Purring', icon: '🐱', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/purr.mp3' },
-  { id: 'fan', label: 'Electric Fan', icon: '�', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/fan.mp3' },
+  { id: 'fan', label: 'Electric Fan', icon: '🌀', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/fan.mp3' },
   { id: 'library', label: 'Library', icon: '📚', url: 'https://archive.org/download/library-ambience-loop/library-ambience-loop.mp3' },
-  { id: 'waterfall', label: 'Waterfall', icon: '�', url: 'https://archive.org/download/waterfall-loop-audio/waterfall-loop-audio.mp3' },
+  { id: 'waterfall', label: 'Waterfall', icon: '🌊', url: 'https://archive.org/download/waterfall-loop-audio/waterfall-loop-audio.mp3' },
   { id: 'river', label: 'River', icon: '🏞️', url: 'https://raw.githubusercontent.com/rafaelcastrocouto/ambient-sounds/master/sounds/river.mp3' },
   { id: 'lofi', label: 'Lo-Fi Beats', icon: '🎵', url: 'https://archive.org/download/lofi-beats-loop/lofi-beats-loop.mp3' },
   { id: 'piano', label: 'Zen Piano', icon: '🎹', url: 'https://archive.org/download/zen-piano-loop/zen-piano-loop.mp3' },
@@ -132,6 +132,8 @@ function App() {
   const [alertSound, setAlertSound] = useState('gong');
   const [autoTransition, setAutoTransition] = useState(false);
   const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  const [soundLoading, setSoundLoading] = useState(false);
+  const [soundError, setSoundError] = useState(null);
 
   // Statistics
   const [stats, setStats] = useState({
@@ -141,10 +143,17 @@ function App() {
     streak: 0
   });
 
-  // Refs
+  // Refs for audio management
+  const currentAudioRef = useRef(null);
   const audioContextRef = useRef(null);
-  const ambientNodesRef = useRef([]);
-  const gainNodeRef = useRef(null);
+  const noiseSourceRef = useRef(null);
+  const noiseGainRef = useRef(null);
+
+  // Generate random quote (defined before useEffect to avoid reference issues)
+  const generateQuote = useCallback(() => {
+    const randomQuote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+    setQuote(randomQuote);
+  }, []);
 
   // Load data from localStorage
   useEffect(() => {
@@ -194,12 +203,6 @@ function App() {
     } else if (Notification.permission === 'granted') {
       setNotificationsEnabled(true);
     }
-  }, []);
-
-  // Generate random quote
-  const generateQuote = useCallback(() => {
-    const randomQuote = QUOTES[Math.floor(Math.random() * QUOTES.length)];
-    setQuote(randomQuote);
   }, []);
 
   // Play alert sound
@@ -257,7 +260,7 @@ function App() {
         oscillator.start(ctx.currentTime);
         oscillator.stop(ctx.currentTime + 0.8);
         break;
-      case 'singing':
+      case 'singing': {
         oscillator.frequency.setValueAtTime(256, ctx.currentTime);
         const lfo = ctx.createOscillator();
         const lfoGain = ctx.createGain();
@@ -272,6 +275,7 @@ function App() {
         oscillator.start(ctx.currentTime);
         oscillator.stop(ctx.currentTime + 3);
         break;
+      }
       default:
         oscillator.frequency.setValueAtTime(440, ctx.currentTime);
         gainNode.gain.setValueAtTime(0.3, ctx.currentTime);
@@ -318,11 +322,17 @@ function App() {
       if (autoTransition) {
         setTimeout(() => {
           if (session === 'FOCUS') {
-            changeSession('SHORT_BREAK');
+            setSession('SHORT_BREAK');
+            setTimeLeft(sessions.SHORT_BREAK.time * 60);
+            setInitialTime(sessions.SHORT_BREAK.time * 60);
             setIsActive(true);
+            generateQuote();
           } else {
-            changeSession('FOCUS');
+            setSession('FOCUS');
+            setTimeLeft(sessions.FOCUS.time * 60);
+            setInitialTime(sessions.FOCUS.time * 60);
             setIsActive(true);
+            generateQuote();
           }
         }, 2000);
       }
@@ -342,7 +352,9 @@ function App() {
           break;
         case 'KeyR':
           e.preventDefault();
-          resetTimer();
+          setIsActive(false);
+          setTimeLeft(sessions[session].time * 60);
+          setInitialTime(sessions[session].time * 60);
           break;
         case 'KeyF':
           e.preventDefault();
@@ -354,15 +366,27 @@ function App() {
           break;
         case 'Digit1':
           e.preventDefault();
-          changeSession('FOCUS');
+          setSession('FOCUS');
+          setTimeLeft(sessions.FOCUS.time * 60);
+          setInitialTime(sessions.FOCUS.time * 60);
+          setIsActive(false);
+          generateQuote();
           break;
         case 'Digit2':
           e.preventDefault();
-          changeSession('SHORT_BREAK');
+          setSession('SHORT_BREAK');
+          setTimeLeft(sessions.SHORT_BREAK.time * 60);
+          setInitialTime(sessions.SHORT_BREAK.time * 60);
+          setIsActive(false);
+          generateQuote();
           break;
         case 'Digit3':
           e.preventDefault();
-          changeSession('LONG_BREAK');
+          setSession('LONG_BREAK');
+          setTimeLeft(sessions.LONG_BREAK.time * 60);
+          setInitialTime(sessions.LONG_BREAK.time * 60);
+          setIsActive(false);
+          generateQuote();
           break;
         case 'Escape':
           if (fullscreenMode) setFullscreenMode(false);
@@ -373,29 +397,185 @@ function App() {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [fullscreenMode, sidebarOpen]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fullscreenMode, sidebarOpen, sessions, generateQuote]);
 
-  // Create ambient sound - Full real-world audio samples
-  const createAmbientSound = useCallback((soundId) => {
-    // Stop and clean up all previous audio/intervals
-    ambientNodesRef.current.forEach(node => {
+  // Create white noise using Web Audio API (more reliable than external files)
+  const createWhiteNoise = useCallback(() => {
+    if (!audioContextRef.current) {
+      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    const ctx = audioContextRef.current;
+    const bufferSize = 2 * ctx.sampleRate;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const output = buffer.getChannelData(0);
+
+    for (let i = 0; i < bufferSize; i++) {
+      output[i] = Math.random() * 2 - 1;
+    }
+
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    source.loop = true;
+
+    const gainNode = ctx.createGain();
+    gainNode.gain.value = ambientVolume * 0.5;
+
+    source.connect(gainNode);
+    gainNode.connect(ctx.destination);
+    source.start();
+
+    noiseSourceRef.current = source;
+    noiseGainRef.current = gainNode;
+
+    return source;
+  }, [ambientVolume]);
+
+  // Create brown noise using Web Audio API (deeper, more relaxing)
+  const createBrownNoise = useCallback(() => {
+    if (!audioContextRef.current) {
+      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    const ctx = audioContextRef.current;
+    const bufferSize = 2 * ctx.sampleRate;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const output = buffer.getChannelData(0);
+
+    let lastOut = 0;
+    for (let i = 0; i < bufferSize; i++) {
+      const white = Math.random() * 2 - 1;
+      output[i] = (lastOut + (0.02 * white)) / 1.02;
+      lastOut = output[i];
+      output[i] *= 3.5;
+    }
+
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    source.loop = true;
+
+    const gainNode = ctx.createGain();
+    gainNode.gain.value = ambientVolume * 0.5;
+
+    source.connect(gainNode);
+    gainNode.connect(ctx.destination);
+    source.start();
+
+    noiseSourceRef.current = source;
+    noiseGainRef.current = gainNode;
+
+    return source;
+  }, [ambientVolume]);
+
+  // Create rain sound using filtered noise
+  const createRainSound = useCallback(() => {
+    if (!audioContextRef.current) {
+      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    const ctx = audioContextRef.current;
+    const bufferSize = 2 * ctx.sampleRate;
+    const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+    const output = buffer.getChannelData(0);
+
+    for (let i = 0; i < bufferSize; i++) {
+      output[i] = Math.random() * 2 - 1;
+    }
+
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    source.loop = true;
+
+    // Create filter for rain-like sound
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 1000;
+
+    const gainNode = ctx.createGain();
+    gainNode.gain.value = ambientVolume * 0.3;
+
+    source.connect(filter);
+    filter.connect(gainNode);
+    gainNode.connect(ctx.destination);
+    source.start();
+
+    noiseSourceRef.current = source;
+    noiseGainRef.current = gainNode;
+
+    return source;
+  }, [ambientVolume]);
+
+  // Stop all playing sounds
+  const stopAllSounds = useCallback(() => {
+    if (currentAudioRef.current) {
+      currentAudioRef.current.pause();
+      currentAudioRef.current.currentTime = 0;
+      currentAudioRef.current = null;
+    }
+
+    if (noiseSourceRef.current) {
       try {
-        if (node.pause) node.pause();
-        if (node.stop) node.stop();
-        if (node.clear) clearInterval(node.intervalId);
-      } catch (e) { }
-    });
-    ambientNodesRef.current = [];
+        noiseSourceRef.current.stop();
+        noiseSourceRef.current.disconnect();
+      } catch {
+        // Ignore errors when stopping already stopped sources
+      }
+      noiseSourceRef.current = null;
+    }
+
+    if (noiseGainRef.current) {
+      try {
+        noiseGainRef.current.disconnect();
+      } catch {
+        // Ignore errors when disconnecting already disconnected nodes
+      }
+      noiseGainRef.current = null;
+    }
+  }, []);
+
+  // Create ambient sound - Full real-world audio samples with Web Audio API fallbacks
+  const createAmbientSound = useCallback((soundId) => {
+    setSoundLoading(true);
+    setSoundError(null);
+
+    // Stop any currently playing sound
+    stopAllSounds();
 
     if (!soundId) {
       setAmbientSound(null);
+      setSoundLoading(false);
       return;
     }
 
+    // Check if this is a noise sound we can generate locally
+    if (soundId === 'white') {
+      createWhiteNoise();
+      setAmbientSound('white');
+      setSoundLoading(false);
+      return;
+    }
+
+    if (soundId === 'brown') {
+      createBrownNoise();
+      setAmbientSound('brown');
+      setSoundLoading(false);
+      return;
+    }
+
+    if (soundId === 'rain') {
+      // Use local rain sound as primary, with URL fallback
+      createRainSound();
+      setAmbientSound('rain');
+      setSoundLoading(false);
+      return;
+    }
+
+    // For other sounds, try to load from URL
     const sound = AMBIENT_SOUNDS.find(s => s.id === soundId);
     if (!sound || !sound.url) {
-      console.warn("Sound URL not found for", soundId);
-      setAmbientSound(null);
+      setSoundError(`Sound "${soundId}" not available`);
+      setSoundLoading(false);
       return;
     }
 
@@ -404,48 +584,77 @@ function App() {
     audio.loop = true;
     audio.volume = ambientVolume;
 
-    // Attempt to play
-    audio.play().catch(error => {
-      console.error("Playback failed. This is often due to browser autoplay policies or invalid URLs:", error);
+    audio.addEventListener('canplaythrough', () => {
+      setSoundLoading(false);
     });
 
-    ambientNodesRef.current.push(audio);
-    setAmbientSound(soundId);
-  }, [ambientVolume]);
+    audio.addEventListener('error', () => {
+      setSoundError(`Failed to load "${sound.label}". Try a different sound.`);
+      setSoundLoading(false);
+      setAmbientSound(null);
+    });
+
+    audio.play().then(() => {
+      currentAudioRef.current = audio;
+      setAmbientSound(soundId);
+      setSoundError(null);
+    }).catch(error => {
+      let errorMsg = 'Playback failed';
+      if (error.name === 'NotAllowedError') {
+        errorMsg = 'Autoplay blocked - click a sound button to enable audio';
+      } else if (error.name === 'NotSupportedError') {
+        errorMsg = `Format not supported for "${sound.label}"`;
+      }
+      setSoundError(errorMsg);
+      setSoundLoading(false);
+    });
+
+    // Timeout for loading
+    setTimeout(() => {
+      if (soundLoading) {
+        setSoundError(`Loading timeout for "${sound.label}". Check your connection.`);
+        setSoundLoading(false);
+      }
+    }, 10000);
+  }, [ambientVolume, soundLoading, stopAllSounds, createWhiteNoise, createBrownNoise, createRainSound]);
 
   // Update ambient volume
   useEffect(() => {
-    if (gainNodeRef.current) {
-      gainNodeRef.current.gain.value = ambientVolume;
+    if (noiseGainRef.current) {
+      noiseGainRef.current.gain.value = ambientVolume * 0.5;
     }
-    // Also update any playing Audio elements (URL-based sounds)
-    ambientNodesRef.current.forEach(node => {
-      if (node instanceof Audio) {
-        node.volume = ambientVolume;
-      }
-    });
+    if (currentAudioRef.current) {
+      currentAudioRef.current.volume = ambientVolume;
+    }
   }, [ambientVolume]);
 
-  // Timer controls
-  const toggleTimer = () => setIsActive(!isActive);
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      stopAllSounds();
+    };
+  }, [stopAllSounds]);
 
-  const resetTimer = () => {
+  // Timer controls (defined before useEffect to avoid reference issues)
+  const toggleTimer = useCallback(() => setIsActive(prev => !prev), []);
+
+  const resetTimer = useCallback(() => {
     setIsActive(false);
     const time = sessions[session].time * 60;
     setTimeLeft(time);
     setInitialTime(time);
-  };
+  }, [sessions, session]);
 
-  const changeSession = (type) => {
+  const changeSession = useCallback((type) => {
     setSession(type);
     const time = sessions[type].time * 60;
     setTimeLeft(time);
     setInitialTime(time);
     setIsActive(false);
     generateQuote();
-  };
+  }, [sessions]);
 
-  const updateSessionTime = (type, minutes) => {
+  const updateSessionTime = useCallback((type, minutes) => {
     const newTime = Math.max(1, Math.min(120, parseInt(minutes) || 1));
     setSessions(prev => ({
       ...prev,
@@ -455,7 +664,7 @@ function App() {
       setTimeLeft(newTime * 60);
       setInitialTime(newTime * 60);
     }
-  };
+  }, [session, isActive]);
 
   // Section toggle
   const toggleSection = (sectionId) => {
@@ -697,6 +906,18 @@ function App() {
                 onChange={(e) => setAmbientVolume(parseFloat(e.target.value))}
               />
             </div>
+            {soundLoading && (
+              <div className="sound-status loading">
+                <div className="loading-spinner"></div>
+                <span>Loading sound...</span>
+              </div>
+            )}
+            {soundError && (
+              <div className="sound-status error">
+                <span>⚠️ {soundError}</span>
+                <button onClick={() => setSoundError(null)}>✕</button>
+              </div>
+            )}
           </div>
         </div>
 
