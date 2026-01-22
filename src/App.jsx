@@ -27,32 +27,32 @@ const QUOTES = [
   { text: "Dreams don't work unless you do.", author: "John C. Maxwell" }
 ];
 
-// 24 Ambient sounds - Mixed high-quality samples and synthesized sounds
+// 24 Ambient sounds - High-quality real-world audio samples from stable CDNs
 const AMBIENT_SOUNDS = [
-  { id: 'rain', label: 'Rain', icon: '🌧️', url: 'https://actions.google.com/sounds/v1/water/rain_on_roof.ogg' },
-  { id: 'thunder', label: 'Thunder', icon: '⛈️', url: 'https://actions.google.com/sounds/v1/weather/rolling_thunder.ogg' },
-  { id: 'ocean', label: 'Ocean', icon: '🌊', url: 'https://actions.google.com/sounds/v1/water/crashing_waves.ogg' },
-  { id: 'forest', label: 'Forest', icon: '🌲', url: 'https://actions.google.com/sounds/v1/ambiences/forest_ambience.ogg' },
-  { id: 'birds', label: 'Birds', icon: '🐦', url: 'https://actions.google.com/sounds/v1/animals/bird_sounds.ogg' },
-  { id: 'wind', label: 'Wind', icon: '💨', url: 'https://actions.google.com/sounds/v1/weather/wind.ogg' },
-  { id: 'fire', label: 'Fire', icon: '🔥', url: 'https://actions.google.com/sounds/v1/ambiences/campfire.ogg' },
-  { id: 'night', label: 'Night', icon: '🌙', url: 'https://actions.google.com/sounds/v1/ambiences/night_sounds.ogg' },
-  { id: 'cafe', label: 'Cafe', icon: '☕', url: 'https://actions.google.com/sounds/v1/ambiences/coffee_shop.ogg' },
-  { id: 'whitenoise', label: 'White', icon: '📻' },
-  { id: 'pinknoise', label: 'Pink', icon: '🎀' },
-  { id: 'brownnoise', label: 'Brown', icon: '🟤' },
-  { id: 'train', label: 'Train', icon: '🚂' },
-  { id: 'river', label: 'River', icon: '🏞️' },
-  { id: 'waterfall', label: 'Waterfall', icon: '💧' },
-  { id: 'lofi', label: 'Lo-Fi', icon: '🎵' },
-  { id: 'piano', label: 'Piano', icon: '🎹' },
-  { id: 'space', label: 'Space', icon: '🌌' },
-  { id: 'tibetan', label: 'Tibetan', icon: '🔔' },
-  { id: 'binaural', label: 'Binaural', icon: '🧠' },
-  { id: 'heartbeat', label: 'Heart', icon: '❤️' },
-  { id: 'keyboard', label: 'Typing', icon: '⌨️' },
-  { id: 'fan', label: 'Fan', icon: '🌀' },
-  { id: 'underwater', label: 'Underwater', icon: '🫧' }
+  { id: 'rain', label: 'Heavy Rain', icon: '🌧️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/rain.mp3' },
+  { id: 'thunder', label: 'Thunder', icon: '⛈️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/thunder.mp3' },
+  { id: 'ocean', label: 'Ocean Waves', icon: '🌊', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/waves.mp3' },
+  { id: 'forest', label: 'Windy Leaves', icon: '🌲', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/leaves.mp3' },
+  { id: 'birds', label: 'Birds', icon: '🐦', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/birds.mp3' },
+  { id: 'wind', label: 'Howling Wind', icon: '💨', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/wind.mp3' },
+  { id: 'fire', label: 'Campfire', icon: '🔥', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/fire.mp3' },
+  { id: 'night', label: 'Crickets', icon: '🌙', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/crickets.mp3' },
+  { id: 'frogs', label: 'Frog Lake', icon: '🐸', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/frogs.mp3' },
+  { id: 'cafe', label: 'Busy Cafe', icon: '☕', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/cafe.mp3' },
+  { id: 'street', label: 'City Street', icon: '🏙️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/street.mp3' },
+  { id: 'airplane', label: 'Airplane', icon: '✈️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/airplane.mp3' },
+  { id: 'train', label: 'Train Ride', icon: '🚂', url: 'https://raw.githubusercontent.com/rafaelcastrocouto/ambient-sounds/master/sounds/train.mp3' },
+  { id: 'clock', label: 'Clock', icon: '⏰', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/clock.mp3' },
+  { id: 'typewriter', label: 'Typewriter', icon: '⌨️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/typewriter.mp3' },
+  { id: 'purr', label: 'Cat Purring', icon: '🐱', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/purr.mp3' },
+  { id: 'fan', label: 'Electric Fan', icon: '�', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/fan.mp3' },
+  { id: 'library', label: 'Library', icon: '📚', url: 'https://archive.org/download/library-ambience-loop/library-ambience-loop.mp3' },
+  { id: 'waterfall', label: 'Waterfall', icon: '�', url: 'https://archive.org/download/waterfall-loop-audio/waterfall-loop-audio.mp3' },
+  { id: 'river', label: 'River', icon: '🏞️', url: 'https://raw.githubusercontent.com/rafaelcastrocouto/ambient-sounds/master/sounds/river.mp3' },
+  { id: 'lofi', label: 'Lo-Fi Beats', icon: '🎵', url: 'https://archive.org/download/lofi-beats-loop/lofi-beats-loop.mp3' },
+  { id: 'piano', label: 'Zen Piano', icon: '🎹', url: 'https://archive.org/download/zen-piano-loop/zen-piano-loop.mp3' },
+  { id: 'white', label: 'White Noise', icon: '📻', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/white.mp3' },
+  { id: 'brown', label: 'Brown Noise', icon: '🟤', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/brown.mp3' }
 ];
 
 // Themes
@@ -375,13 +375,13 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [fullscreenMode, sidebarOpen]);
 
-  // Create ambient sound - Detailed and realistic sound generation
+  // Create ambient sound - Full real-world audio samples
   const createAmbientSound = useCallback((soundId) => {
-    // Stop existing sounds and intervals
+    // Stop and clean up all previous audio/intervals
     ambientNodesRef.current.forEach(node => {
       try {
-        if (node.stop) node.stop();
         if (node.pause) node.pause();
+        if (node.stop) node.stop();
         if (node.clear) clearInterval(node.intervalId);
       } catch (e) { }
     });
@@ -393,614 +393,23 @@ function App() {
     }
 
     const sound = AMBIENT_SOUNDS.find(s => s.id === soundId);
-    if (!sound) return;
-
-    // Use external high-quality sample if available
-    if (sound.url) {
-      const audio = new Audio(sound.url);
-      audio.loop = true;
-      audio.volume = ambientVolume;
-      audio.play().catch(e => console.error("Audio playback failed", e));
-      ambientNodesRef.current.push(audio);
-      setAmbientSound(soundId);
+    if (!sound || !sound.url) {
+      console.warn("Sound URL not found for", soundId);
+      setAmbientSound(null);
       return;
     }
 
-    if (!audioContextRef.current) {
-      audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
-    }
-    const ctx = audioContextRef.current;
-
-    // Master gain
-    gainNodeRef.current = ctx.createGain();
-    gainNodeRef.current.gain.value = ambientVolume;
-    gainNodeRef.current.connect(ctx.destination);
-
-    // Helper: Create filtered noise
-    const createNoise = (filterFreq, filterType = 'lowpass', gain = 1) => {
-      const bufferSize = 2 * ctx.sampleRate;
-      const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      const output = noiseBuffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        output[i] = Math.random() * 2 - 1;
-      }
-      const noise = ctx.createBufferSource();
-      noise.buffer = noiseBuffer;
-      noise.loop = true;
-
-      const filter = ctx.createBiquadFilter();
-      filter.type = filterType;
-      filter.frequency.value = filterFreq;
-
-      const noiseGain = ctx.createGain();
-      noiseGain.gain.value = gain;
-
-      noise.connect(filter);
-      filter.connect(noiseGain);
-      noiseGain.connect(gainNodeRef.current);
-      noise.start();
-      ambientNodesRef.current.push(noise);
-      return { noise, filter, gain: noiseGain };
-    };
-
-    // Helper: Create oscillator tone
-    const createTone = (freq, type = 'sine', gain = 0.2) => {
-      const osc = ctx.createOscillator();
-      osc.type = type;
-      osc.frequency.value = freq;
-      const oscGain = ctx.createGain();
-      oscGain.gain.value = gain;
-      osc.connect(oscGain);
-      oscGain.connect(gainNodeRef.current);
-      osc.start();
-      ambientNodesRef.current.push(osc);
-      return { osc, gain: oscGain };
-    };
-
-    // Sound-specific generation
-    switch (soundId) {
-
-      // 🌧️ RAIN - Realistic rain with surface hit sounds (patter)
-      case 'rain': {
-        // 1. Base hum - The sound of rain falling in the distance
-        createNoise(400, 'lowpass', 0.2);
-        createNoise(1500, 'bandpass', 0.1);
-
-        // 2. High-frequency hiss - The constant mist sound
-        createNoise(8000, 'highpass', 0.05);
-
-        // 3. Droplet Layer - Simulating raindrops hitting a surface
-        const rainInterval = setInterval(() => {
-          if (!audioContextRef.current) return;
-
-          // Generate multiple mini-splashes for density
-          const numDrops = 2 + Math.floor(Math.random() * 3);
-          for (let i = 0; i < numDrops; i++) {
-            const delay = Math.random() * 0.05;
-
-            setTimeout(() => {
-              if (!audioContextRef.current) return;
-
-              // Create a short burst of noise for the "hit"
-              const osc = ctx.createOscillator();
-              const noiseGain = ctx.createGain();
-              const filter = ctx.createBiquadFilter();
-
-              filter.type = 'highpass';
-              filter.frequency.value = 3000 + Math.random() * 4000;
-
-              noiseGain.gain.setValueAtTime((0.05 + Math.random() * 0.1) * ambientVolume, ctx.currentTime);
-              noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.01 + Math.random() * 0.03);
-
-              // We use a very fast oscillator to simulate a click if noise isn't handy
-              osc.type = 'square';
-              osc.frequency.setValueAtTime(100 + Math.random() * 1000, ctx.currentTime);
-
-              osc.connect(filter);
-              filter.connect(noiseGain);
-              noiseGain.connect(ctx.destination);
-
-              osc.start();
-              osc.stop(ctx.currentTime + 0.05);
-            }, delay * 1000);
-          }
-        }, 80); // Fast enough to sound like continuous rain
-
-        ambientNodesRef.current.push({ intervalId: rainInterval, clear: true });
-        break;
-      }
-
-      // ⛈️ THUNDER - Deep rumbling thunder with occasional cracks
-      case 'thunder': {
-        // Continuous low rumble
-        createNoise(80, 'lowpass', 0.5);
-        createNoise(150, 'lowpass', 0.3);
-
-        // Deep bass drone for distance thunder
-        const bass = createTone(40, 'sine', 0.3);
-
-        // LFO for rumble variation
-        const lfo = ctx.createOscillator();
-        lfo.type = 'sine';
-        lfo.frequency.value = 0.3;
-        const lfoGain = ctx.createGain();
-        lfoGain.gain.value = 0.2;
-        lfo.connect(lfoGain);
-        lfoGain.connect(gainNodeRef.current.gain);
-        lfo.start();
-        ambientNodesRef.current.push(lfo);
-
-        // Periodic thunder crack effect
-        const thunderInterval = setInterval(() => {
-          if (!audioContextRef.current) return;
-          const crack = ctx.createOscillator();
-          crack.type = 'sawtooth';
-          crack.frequency.value = 30 + Math.random() * 50;
-          const crackGain = ctx.createGain();
-          crackGain.gain.setValueAtTime(0.4 * ambientVolume, ctx.currentTime);
-          crackGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 2 + Math.random() * 2);
-          crack.connect(crackGain);
-          crackGain.connect(ctx.destination);
-          crack.start();
-          crack.stop(ctx.currentTime + 4);
-        }, 8000 + Math.random() * 7000);
-        ambientNodesRef.current.push({ intervalId: thunderInterval, clear: true });
-        break;
-      }
-
-      // 🌊 OCEAN - Waves coming and going
-      case 'ocean': {
-        // Base ocean noise
-        const oceanNoise = createNoise(400, 'lowpass', 0.4);
-        createNoise(800, 'bandpass', 0.2);
-
-        // Wave LFO - slow sweeping volume
-        const waveLfo = ctx.createOscillator();
-        waveLfo.type = 'sine';
-        waveLfo.frequency.value = 0.08; // Very slow waves
-        const waveLfoGain = ctx.createGain();
-        waveLfoGain.gain.value = 0.25;
-        waveLfo.connect(waveLfoGain);
-        waveLfoGain.connect(oceanNoise.gain.gain);
-        waveLfo.start();
-        ambientNodesRef.current.push(waveLfo);
-
-        // Secondary wave layer
-        const waveLfo2 = ctx.createOscillator();
-        waveLfo2.type = 'sine';
-        waveLfo2.frequency.value = 0.12;
-        const waveLfoGain2 = ctx.createGain();
-        waveLfoGain2.gain.value = 0.15;
-        waveLfo2.connect(waveLfoGain2);
-        waveLfoGain2.connect(gainNodeRef.current.gain);
-        waveLfo2.start();
-        ambientNodesRef.current.push(waveLfo2);
-        break;
-      }
-
-      // 🌲 FOREST - Birds, wind through leaves, ambient nature
-      case 'forest': {
-        // Wind through leaves
-        createNoise(2000, 'bandpass', 0.15);
-        createNoise(600, 'lowpass', 0.1);
-
-        // Random bird chirps
-        const birdInterval = setInterval(() => {
-          if (!audioContextRef.current) return;
-          const bird = ctx.createOscillator();
-          bird.type = 'sine';
-          const startFreq = 1800 + Math.random() * 1200;
-          bird.frequency.setValueAtTime(startFreq, ctx.currentTime);
-          bird.frequency.setValueAtTime(startFreq + 400, ctx.currentTime + 0.05);
-          bird.frequency.setValueAtTime(startFreq - 200, ctx.currentTime + 0.1);
-          bird.frequency.setValueAtTime(startFreq + 300, ctx.currentTime + 0.15);
-          const birdGain = ctx.createGain();
-          birdGain.gain.setValueAtTime(0.15 * ambientVolume, ctx.currentTime);
-          birdGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.25);
-          bird.connect(birdGain);
-          birdGain.connect(ctx.destination);
-          bird.start();
-          bird.stop(ctx.currentTime + 0.3);
-        }, 2000 + Math.random() * 3000);
-        ambientNodesRef.current.push({ intervalId: birdInterval, clear: true });
-        break;
-      }
-
-      // 🐦 BIRDS - Active bird chirping
-      case 'birds': {
-        // Multiple bird chirp patterns
-        const chirpInterval = setInterval(() => {
-          if (!audioContextRef.current) return;
-          const numChirps = 2 + Math.floor(Math.random() * 3);
-          for (let i = 0; i < numChirps; i++) {
-            setTimeout(() => {
-              const bird = ctx.createOscillator();
-              bird.type = 'sine';
-              const baseFreq = 2000 + Math.random() * 2000;
-              bird.frequency.setValueAtTime(baseFreq, ctx.currentTime);
-              bird.frequency.linearRampToValueAtTime(baseFreq + 500, ctx.currentTime + 0.05);
-              bird.frequency.linearRampToValueAtTime(baseFreq - 300, ctx.currentTime + 0.1);
-              const birdGain = ctx.createGain();
-              birdGain.gain.setValueAtTime(0.2 * ambientVolume, ctx.currentTime);
-              birdGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
-              bird.connect(birdGain);
-              birdGain.connect(ctx.destination);
-              bird.start();
-              bird.stop(ctx.currentTime + 0.2);
-            }, i * 100);
-          }
-        }, 1000 + Math.random() * 2000);
-        ambientNodesRef.current.push({ intervalId: chirpInterval, clear: true });
-        break;
-      }
-
-      // 💨 WIND - Howling and gusting wind
-      case 'wind': {
-        const windNoise = createNoise(600, 'bandpass', 0.4);
-        createNoise(1200, 'highpass', 0.15);
-
-        // Wind gusts LFO
-        const gustLfo = ctx.createOscillator();
-        gustLfo.type = 'sine';
-        gustLfo.frequency.value = 0.15;
-        const gustGain = ctx.createGain();
-        gustGain.gain.value = 0.3;
-        gustLfo.connect(gustGain);
-        gustGain.connect(windNoise.filter.frequency);
-        gustLfo.start();
-        ambientNodesRef.current.push(gustLfo);
-        break;
-      }
-
-      // 🔥 FIRE - Crackling campfire
-      case 'fire': {
-        // Base fire crackle
-        createNoise(300, 'lowpass', 0.3);
-        createNoise(1500, 'bandpass', 0.2);
-
-        // Random crackle pops
-        const crackleInterval = setInterval(() => {
-          if (!audioContextRef.current) return;
-          const pop = ctx.createOscillator();
-          pop.type = 'sawtooth';
-          pop.frequency.value = 100 + Math.random() * 200;
-          const popGain = ctx.createGain();
-          popGain.gain.setValueAtTime(0.15 * ambientVolume, ctx.currentTime);
-          popGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.05);
-          pop.connect(popGain);
-          popGain.connect(ctx.destination);
-          pop.start();
-          pop.stop(ctx.currentTime + 0.1);
-        }, 200 + Math.random() * 400);
-        ambientNodesRef.current.push({ intervalId: crackleInterval, clear: true });
-        break;
-      }
-
-      // 🌙 NIGHT - Crickets and night ambiance
-      case 'night': {
-        // Ambient night noise
-        createNoise(400, 'lowpass', 0.1);
-
-        // Cricket chirps - high frequency pulsing
-        const cricket1 = createTone(4000, 'sine', 0.08);
-        const cricket2 = createTone(4200, 'sine', 0.06);
-
-        // Cricket pulse LFO
-        const cricketLfo = ctx.createOscillator();
-        cricketLfo.type = 'square';
-        cricketLfo.frequency.value = 15;
-        const cricketLfoGain = ctx.createGain();
-        cricketLfoGain.gain.value = 0.08;
-        cricketLfo.connect(cricketLfoGain);
-        cricketLfoGain.connect(cricket1.gain.gain);
-        cricketLfo.start();
-        ambientNodesRef.current.push(cricketLfo);
-        break;
-      }
-
-      // 📻 WHITE NOISE - Pure white noise
-      case 'whitenoise': {
-        createNoise(20000, 'lowpass', 0.5);
-        break;
-      }
-
-      // 🎀 PINK NOISE - Softer, more natural noise
-      case 'pinknoise': {
-        createNoise(1000, 'lowpass', 0.5);
-        createNoise(500, 'lowpass', 0.3);
-        break;
-      }
-
-      // 🟤 BROWN NOISE - Deep, rumbling noise
-      case 'brownnoise': {
-        createNoise(200, 'lowpass', 0.6);
-        createNoise(100, 'lowpass', 0.3);
-        break;
-      }
-
-      // ☕ CAFE - Coffee shop ambiance with murmurs
-      case 'cafe': {
-        // Background chatter (filtered noise)
-        createNoise(800, 'bandpass', 0.25);
-        createNoise(400, 'lowpass', 0.15);
-        createNoise(1200, 'bandpass', 0.1);
-
-        // Occasional cup/plate sounds
-        const cafeInterval = setInterval(() => {
-          if (!audioContextRef.current) return;
-          const clink = ctx.createOscillator();
-          clink.type = 'sine';
-          clink.frequency.value = 2000 + Math.random() * 1000;
-          const clinkGain = ctx.createGain();
-          clinkGain.gain.setValueAtTime(0.08 * ambientVolume, ctx.currentTime);
-          clinkGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
-          clink.connect(clinkGain);
-          clinkGain.connect(ctx.destination);
-          clink.start();
-          clink.stop(ctx.currentTime + 0.15);
-        }, 3000 + Math.random() * 5000);
-        ambientNodesRef.current.push({ intervalId: cafeInterval, clear: true });
-        break;
-      }
-
-      // 🚂 TRAIN - Rhythmic train on tracks
-      case 'train': {
-        // Base train rumble
-        createNoise(100, 'lowpass', 0.3);
-
-        // Rhythmic clacking
-        const trainOsc = createTone(80, 'sine', 0.2);
-        const trainLfo = ctx.createOscillator();
-        trainLfo.type = 'square';
-        trainLfo.frequency.value = 3; // Clack clack rhythm
-        const trainLfoGain = ctx.createGain();
-        trainLfoGain.gain.value = 0.15;
-        trainLfo.connect(trainLfoGain);
-        trainLfoGain.connect(trainOsc.gain.gain);
-        trainLfo.start();
-        ambientNodesRef.current.push(trainLfo);
-
-        // Wheel on track sound
-        createNoise(300, 'bandpass', 0.15);
-        break;
-      }
-
-      // 🏞️ RIVER - Flowing river water
-      case 'river': {
-        createNoise(1000, 'bandpass', 0.35);
-        createNoise(2000, 'highpass', 0.2);
-        createNoise(500, 'lowpass', 0.2);
-
-        // Flow variation
-        const riverLfo = ctx.createOscillator();
-        riverLfo.type = 'sine';
-        riverLfo.frequency.value = 0.2;
-        const riverLfoGain = ctx.createGain();
-        riverLfoGain.gain.value = 0.1;
-        riverLfo.connect(riverLfoGain);
-        riverLfoGain.connect(gainNodeRef.current.gain);
-        riverLfo.start();
-        ambientNodesRef.current.push(riverLfo);
-        break;
-      }
-
-      // 💧 WATERFALL - Powerful rushing water
-      case 'waterfall': {
-        createNoise(2000, 'lowpass', 0.5);
-        createNoise(4000, 'highpass', 0.3);
-        createNoise(800, 'bandpass', 0.25);
-        // Deep rumble
-        createNoise(200, 'lowpass', 0.2);
-        break;
-      }
-
-      // 🎵 LO-FI - Chill lo-fi beats
-      case 'lofi': {
-        // Warm pad chords
-        createTone(220, 'sine', 0.15);  // A3
-        createTone(277, 'sine', 0.12);  // C#4
-        createTone(330, 'sine', 0.12);  // E4
-        createTone(440, 'sine', 0.08);  // A4
-
-        // Vinyl crackle
-        createNoise(8000, 'highpass', 0.05);
-        break;
-      }
-
-      // 🎹 PIANO - Soft ambient piano
-      case 'piano': {
-        const notes = [261.63, 329.63, 392.00, 523.25]; // C4, E4, G4, C5
-        notes.forEach((freq, i) => {
-          createTone(freq, 'sine', 0.1 - i * 0.02);
-        });
-        break;
-      }
-
-      // 🌌 SPACE - Deep space ambient drone
-      case 'space': {
-        createTone(55, 'sine', 0.2);   // Deep bass
-        createTone(82.5, 'sine', 0.15);
-        createTone(110, 'triangle', 0.1);
-
-        // Slow modulation for space feel
-        const spaceLfo = ctx.createOscillator();
-        spaceLfo.type = 'sine';
-        spaceLfo.frequency.value = 0.05;
-        const spaceLfoGain = ctx.createGain();
-        spaceLfoGain.gain.value = 0.1;
-        spaceLfo.connect(spaceLfoGain);
-        spaceLfoGain.connect(gainNodeRef.current.gain);
-        spaceLfo.start();
-        ambientNodesRef.current.push(spaceLfo);
-        break;
-      }
-
-      // 🔔 TIBETAN - Tibetan singing bowl
-      case 'tibetan': {
-        // Fundamental and harmonics of singing bowl
-        createTone(256, 'sine', 0.25);
-        createTone(512, 'sine', 0.15);
-        createTone(768, 'sine', 0.08);
-        createTone(1024, 'sine', 0.05);
-
-        // Slow beating/wobble
-        const bowlLfo = ctx.createOscillator();
-        bowlLfo.type = 'sine';
-        bowlLfo.frequency.value = 2;
-        const bowlLfoGain = ctx.createGain();
-        bowlLfoGain.gain.value = 0.05;
-        bowlLfo.connect(bowlLfoGain);
-        bowlLfoGain.connect(gainNodeRef.current.gain);
-        bowlLfo.start();
-        ambientNodesRef.current.push(bowlLfo);
-        break;
-      }
-
-      // 🧠 BINAURAL - Binaural beats for focus (40Hz difference)
-      case 'binaural': {
-        // Left ear: 200Hz, Right ear: 240Hz = 40Hz binaural beat
-        const leftOsc = ctx.createOscillator();
-        leftOsc.type = 'sine';
-        leftOsc.frequency.value = 200;
-        const leftGain = ctx.createGain();
-        leftGain.gain.value = 0.2;
-        const leftPanner = ctx.createStereoPanner();
-        leftPanner.pan.value = -1;
-        leftOsc.connect(leftGain);
-        leftGain.connect(leftPanner);
-        leftPanner.connect(gainNodeRef.current);
-        leftOsc.start();
-        ambientNodesRef.current.push(leftOsc);
-
-        const rightOsc = ctx.createOscillator();
-        rightOsc.type = 'sine';
-        rightOsc.frequency.value = 240;
-        const rightGain = ctx.createGain();
-        rightGain.gain.value = 0.2;
-        const rightPanner = ctx.createStereoPanner();
-        rightPanner.pan.value = 1;
-        rightOsc.connect(rightGain);
-        rightGain.connect(rightPanner);
-        rightPanner.connect(gainNodeRef.current);
-        rightOsc.start();
-        ambientNodesRef.current.push(rightOsc);
-        break;
-      }
-
-      // ❤️ HEARTBEAT - Realistic heartbeat pulse
-      case 'heartbeat': {
-        // Heartbeat at ~60 BPM
-        const heartbeatInterval = setInterval(() => {
-          if (!audioContextRef.current) return;
-          // First beat (lub)
-          const lub = ctx.createOscillator();
-          lub.type = 'sine';
-          lub.frequency.value = 60;
-          const lubGain = ctx.createGain();
-          lubGain.gain.setValueAtTime(0.4 * ambientVolume, ctx.currentTime);
-          lubGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
-          lub.connect(lubGain);
-          lubGain.connect(ctx.destination);
-          lub.start();
-          lub.stop(ctx.currentTime + 0.2);
-
-          // Second beat (dub) - slightly delayed
-          setTimeout(() => {
-            const dub = ctx.createOscillator();
-            dub.type = 'sine';
-            dub.frequency.value = 50;
-            const dubGain = ctx.createGain();
-            dubGain.gain.setValueAtTime(0.3 * ambientVolume, ctx.currentTime);
-            dubGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.12);
-            dub.connect(dubGain);
-            dubGain.connect(ctx.destination);
-            dub.start();
-            dub.stop(ctx.currentTime + 0.15);
-          }, 150);
-        }, 1000);
-        ambientNodesRef.current.push({ intervalId: heartbeatInterval, clear: true });
-        break;
-      }
-
-      // ⌨️ KEYBOARD - Mechanical keyboard typing
-      case 'keyboard': {
-        const typeInterval = setInterval(() => {
-          if (!audioContextRef.current) return;
-          // Random typing pattern
-          const numKeys = 1 + Math.floor(Math.random() * 4);
-          for (let i = 0; i < numKeys; i++) {
-            setTimeout(() => {
-              const click = ctx.createOscillator();
-              click.type = 'square';
-              click.frequency.value = 800 + Math.random() * 400;
-              const clickGain = ctx.createGain();
-              clickGain.gain.setValueAtTime(0.08 * ambientVolume, ctx.currentTime);
-              clickGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.02);
-              click.connect(clickGain);
-              clickGain.connect(ctx.destination);
-              click.start();
-              click.stop(ctx.currentTime + 0.03);
-            }, i * (50 + Math.random() * 100));
-          }
-        }, 200 + Math.random() * 300);
-        ambientNodesRef.current.push({ intervalId: typeInterval, clear: true });
-        break;
-      }
-
-      // 🌀 FAN - Electric fan hum
-      case 'fan': {
-        createTone(120, 'sine', 0.2);  // Motor hum
-        createTone(240, 'sine', 0.1);  // Harmonic
-        createNoise(1500, 'bandpass', 0.15);  // Air movement
-
-        // Slight wobble
-        const fanLfo = ctx.createOscillator();
-        fanLfo.type = 'sine';
-        fanLfo.frequency.value = 0.5;
-        const fanLfoGain = ctx.createGain();
-        fanLfoGain.gain.value = 0.03;
-        fanLfo.connect(fanLfoGain);
-        fanLfoGain.connect(gainNodeRef.current.gain);
-        fanLfo.start();
-        ambientNodesRef.current.push(fanLfo);
-        break;
-      }
-
-      // 🫧 UNDERWATER - Muffled underwater ambiance with bubbles
-      case 'underwater': {
-        // Muffled underwater sound
-        createNoise(300, 'lowpass', 0.4);
-        createTone(80, 'sine', 0.15);
-
-        // Random bubbles
-        const bubbleInterval = setInterval(() => {
-          if (!audioContextRef.current) return;
-          const numBubbles = 1 + Math.floor(Math.random() * 3);
-          for (let i = 0; i < numBubbles; i++) {
-            setTimeout(() => {
-              const bubble = ctx.createOscillator();
-              bubble.type = 'sine';
-              bubble.frequency.setValueAtTime(300 + Math.random() * 200, ctx.currentTime);
-              bubble.frequency.exponentialRampToValueAtTime(600 + Math.random() * 300, ctx.currentTime + 0.1);
-              const bubbleGain = ctx.createGain();
-              bubbleGain.gain.setValueAtTime(0.1 * ambientVolume, ctx.currentTime);
-              bubbleGain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.15);
-              bubble.connect(bubbleGain);
-              bubbleGain.connect(ctx.destination);
-              bubble.start();
-              bubble.stop(ctx.currentTime + 0.2);
-            }, i * 100);
-          }
-        }, 500 + Math.random() * 1500);
-        ambientNodesRef.current.push({ intervalId: bubbleInterval, clear: true });
-        break;
-      }
-
-      default:
-        createNoise(1000, 'lowpass', 0.3);
-        break;
-    }
-
+    // Initialize and play real-world audio sample
+    const audio = new Audio(sound.url);
+    audio.loop = true;
+    audio.volume = ambientVolume;
+
+    // Attempt to play
+    audio.play().catch(error => {
+      console.error("Playback failed. This is often due to browser autoplay policies or invalid URLs:", error);
+    });
+
+    ambientNodesRef.current.push(audio);
     setAmbientSound(soundId);
   }, [ambientVolume]);
 
