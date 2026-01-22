@@ -27,9 +27,9 @@ const QUOTES = [
   { text: "Dreams don't work unless you do.", author: "John C. Maxwell" }
 ];
 
-// Ambient sounds - High-quality real-world audio samples from stable CDNs and GitHub repositories
+// Ambient sounds - High-quality real-world audio samples from verified sources
 const AMBIENT_SOUNDS = [
-  // Nature sounds from Muges/ambientsounds GitHub repository (verified CC-licensed)
+  // Nature sounds from Muges/ambientsounds GitHub repository (CC-licensed)
   { id: 'rain', label: 'Heavy Rain', icon: '🌧️', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/heavy-rain.ogg' },
   { id: 'forest-rain', label: 'Forest Rain', icon: '🌲🌧️', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/forest-rain.ogg' },
   { id: 'thunder', label: 'Thunderstorm', icon: '⛈️', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/thunderstorm.ogg' },
@@ -37,14 +37,22 @@ const AMBIENT_SOUNDS = [
   { id: 'wind', label: 'Wind', icon: '💨', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/wind.ogg' },
   { id: 'fire', label: 'Fireplace', icon: '🔥', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/fireplace.ogg' },
   
-  // Archive.org verified ambient sounds (public domain / CC-licensed)
-  { id: 'ocean', label: 'Ocean Waves', icon: '🌊', url: 'https://archive.org/download/Freesound-263995/263995__hansende__ocean-waves-3-hours.mp3' },
-  { id: 'deep-ocean', label: 'Deep Ocean', icon: '🌊', url: 'https://archive.org/download/deep-fathom-ocean-ambient-music-underwater-sounds-1-hour/Deep%20Fathom%20Ocean%20-%20Ambient%20Music%20Underwater%20Sounds%20%281%20Hour%29.mp3' },
-  { id: 'tropical-rain', label: 'Tropical Rain', icon: '☔', url: 'https://archive.org/download/4-k-tropical-rain-relaxing-nature-sounds-ultra-hd-nature-video-sleep-relax-study-meditate/4K%20Tropical%20Rain%20%26%20Relaxing%20Nature%20Sounds.mp4' },
+  // Ocean & Water sounds from Archive.org (3-hour recordings)
+  { id: 'ocean-waves', label: 'Ocean Waves', icon: '🌊', url: 'https://archive.org/download/Freesound-263995/Crashing_Ocean_Waves_3_hours_To_Relax_Sleep_or_Meditate-263995.mp3' },
+  { id: 'ocean-ogg', label: 'Ocean (OGG)', icon: '🌊', url: 'https://archive.org/download/Freesound-263995/Crashing_Ocean_Waves_3_hours_To_Relax_Sleep_or_Meditate-263995.ogg' },
+  { id: 'waterfall', label: 'Waterfall', icon: '💧', url: 'https://archive.org/download/clip-waterfall-relaxing-sleep-rem-asmr/Waterfall%20Relaxing%20Sleep%20REM%20Red%20Noise%20ASMR.mp3' },
   { id: 'nature-rain', label: 'Nature Rain', icon: '🌧️', url: 'https://archive.org/download/Red_Library_Nature_Rain/Red_Library_Nature_Rain.mp3' },
   { id: 'ambient-nature', label: 'Ambient Nature', icon: '🌿', url: 'https://archive.org/download/feel-the-nature-ambient-sound-2020/01%20-%20Feel%20The%20Nature%20-%20Ambient%20Sound.mp3' },
   
-  // Web Audio API generated sounds (always reliable - no network required)
+  // Birds & Wildlife from Archive.org
+  { id: 'birds', label: 'Birds Chirping', icon: '🐦', url: 'https://archive.org/download/birds_20220124/birds.mp3' },
+  
+  // Urban & Indoor sounds from Archive.org
+  { id: 'coffee-shop', label: 'Coffee Shop', icon: '☕', url: 'https://archive.org/download/1-hour-relaxing-jazz-coffee-shop-music-the-best-melodies-that-will-warm-your-heart/1%20Hour%20Relaxing%20Jazz%20Coffee%20Shop%20Music%20-%20The%20Best%20Melodies%20That%20Will%20Warm%20Your%20Heart.mp3' },
+  { id: 'typing', label: 'Keyboard Typing', icon: '⌨️', url: 'https://archive.org/download/78_typing_gbia3011927a/78_typing_gbia3011927a_vbr.mp3' },
+  { id: 'train', label: 'Train Journey', icon: '🚂', url: 'https://archive.org/download/78_train-sound-effects_gbia0376423b/78_train-sound-effects_gbia0376423b_vbr.mp3' },
+  
+  // Web Audio API generated sounds (no network required)
   { id: 'white', label: 'White Noise', icon: '📻', url: null },
   { id: 'brown', label: 'Brown Noise', icon: '🟤', url: null },
   { id: 'pink', label: 'Pink Noise', icon: '🎀', url: null }
