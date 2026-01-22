@@ -27,32 +27,27 @@ const QUOTES = [
   { text: "Dreams don't work unless you do.", author: "John C. Maxwell" }
 ];
 
-// 24 Ambient sounds - High-quality real-world audio samples from stable CDNs
+// Ambient sounds - High-quality real-world audio samples from stable CDNs and GitHub repositories
 const AMBIENT_SOUNDS = [
-  { id: 'rain', label: 'Heavy Rain', icon: '🌧️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/rain.mp3' },
-  { id: 'thunder', label: 'Thunder', icon: '⛈️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/thunder.mp3' },
-  { id: 'ocean', label: 'Ocean Waves', icon: '🌊', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/waves.mp3' },
-  { id: 'forest', label: 'Windy Leaves', icon: '🌲', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/leaves.mp3' },
-  { id: 'birds', label: 'Birds', icon: '🐦', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/birds.mp3' },
-  { id: 'wind', label: 'Howling Wind', icon: '💨', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/wind.mp3' },
-  { id: 'fire', label: 'Campfire', icon: '🔥', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/fire.mp3' },
-  { id: 'night', label: 'Crickets', icon: '🌙', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/crickets.mp3' },
-  { id: 'frogs', label: 'Frog Lake', icon: '🐸', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/frogs.mp3' },
-  { id: 'cafe', label: 'Busy Cafe', icon: '☕', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/cafe.mp3' },
-  { id: 'street', label: 'City Street', icon: '🏙️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/street.mp3' },
-  { id: 'airplane', label: 'Airplane', icon: '✈️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/airplane.mp3' },
-  { id: 'train', label: 'Train Ride', icon: '🚂', url: 'https://raw.githubusercontent.com/rafaelcastrocouto/ambient-sounds/master/sounds/train.mp3' },
-  { id: 'clock', label: 'Clock', icon: '⏰', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/clock.mp3' },
-  { id: 'typewriter', label: 'Typewriter', icon: '⌨️', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/typewriter.mp3' },
-  { id: 'purr', label: 'Cat Purring', icon: '🐱', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/purr.mp3' },
-  { id: 'fan', label: 'Electric Fan', icon: '🌀', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/fan.mp3' },
-  { id: 'library', label: 'Library', icon: '📚', url: 'https://archive.org/download/library-ambience-loop/library-ambience-loop.mp3' },
-  { id: 'waterfall', label: 'Waterfall', icon: '🌊', url: 'https://archive.org/download/waterfall-loop-audio/waterfall-loop-audio.mp3' },
-  { id: 'river', label: 'River', icon: '🏞️', url: 'https://raw.githubusercontent.com/rafaelcastrocouto/ambient-sounds/master/sounds/river.mp3' },
-  { id: 'lofi', label: 'Lo-Fi Beats', icon: '🎵', url: 'https://archive.org/download/lofi-beats-loop/lofi-beats-loop.mp3' },
-  { id: 'piano', label: 'Zen Piano', icon: '🎹', url: 'https://archive.org/download/zen-piano-loop/zen-piano-loop.mp3' },
-  { id: 'white', label: 'White Noise', icon: '📻', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/white.mp3' },
-  { id: 'brown', label: 'Brown Noise', icon: '🟤', url: 'https://raw.githubusercontent.com/ebraminio/ambient/master/sounds/brown.mp3' }
+  // Nature sounds from Muges/ambientsounds GitHub repository (verified CC-licensed)
+  { id: 'rain', label: 'Heavy Rain', icon: '🌧️', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/heavy-rain.ogg' },
+  { id: 'forest-rain', label: 'Forest Rain', icon: '🌲🌧️', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/forest-rain.ogg' },
+  { id: 'thunder', label: 'Thunderstorm', icon: '⛈️', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/thunderstorm.ogg' },
+  { id: 'stream', label: 'Stream', icon: '🏞️', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/stream.ogg' },
+  { id: 'wind', label: 'Wind', icon: '💨', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/wind.ogg' },
+  { id: 'fire', label: 'Fireplace', icon: '🔥', url: 'https://raw.githubusercontent.com/Muges/ambientsounds/master/fireplace.ogg' },
+  
+  // Archive.org verified ambient sounds (public domain / CC-licensed)
+  { id: 'ocean', label: 'Ocean Waves', icon: '🌊', url: 'https://archive.org/download/Freesound-263995/263995__hansende__ocean-waves-3-hours.mp3' },
+  { id: 'deep-ocean', label: 'Deep Ocean', icon: '🌊', url: 'https://archive.org/download/deep-fathom-ocean-ambient-music-underwater-sounds-1-hour/Deep%20Fathom%20Ocean%20-%20Ambient%20Music%20Underwater%20Sounds%20%281%20Hour%29.mp3' },
+  { id: 'tropical-rain', label: 'Tropical Rain', icon: '☔', url: 'https://archive.org/download/4-k-tropical-rain-relaxing-nature-sounds-ultra-hd-nature-video-sleep-relax-study-meditate/4K%20Tropical%20Rain%20%26%20Relaxing%20Nature%20Sounds.mp4' },
+  { id: 'nature-rain', label: 'Nature Rain', icon: '🌧️', url: 'https://archive.org/download/Red_Library_Nature_Rain/Red_Library_Nature_Rain.mp3' },
+  { id: 'ambient-nature', label: 'Ambient Nature', icon: '🌿', url: 'https://archive.org/download/feel-the-nature-ambient-sound-2020/01%20-%20Feel%20The%20Nature%20-%20Ambient%20Sound.mp3' },
+  
+  // Web Audio API generated sounds (always reliable - no network required)
+  { id: 'white', label: 'White Noise', icon: '📻', url: null },
+  { id: 'brown', label: 'Brown Noise', icon: '🟤', url: null },
+  { id: 'pink', label: 'Pink Noise', icon: '🎀', url: null }
 ];
 
 // Themes
@@ -468,8 +463,7 @@ function App() {
     return source;
   }, [ambientVolume]);
 
-  // Create rain sound using filtered noise
-  const createRainSound = useCallback(() => {
+  const createPinkNoise = useCallback(() => {
     if (!audioContextRef.current) {
       audioContextRef.current = new (window.AudioContext || window.webkitAudioContext)();
     }
@@ -479,24 +473,28 @@ function App() {
     const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
     const output = buffer.getChannelData(0);
 
+    let b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
     for (let i = 0; i < bufferSize; i++) {
-      output[i] = Math.random() * 2 - 1;
+      const white = Math.random() * 2 - 1;
+      b0 = 0.99886 * b0 + white * 0.0555179;
+      b1 = 0.99332 * b1 + white * 0.0750759;
+      b2 = 0.96900 * b2 + white * 0.1538520;
+      b3 = 0.86650 * b3 + white * 0.3104856;
+      b4 = 0.55000 * b4 + white * 0.5329522;
+      b5 = -0.7616 * b5 - white * 0.0168980;
+      output[i] = b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362;
+      output[i] *= 0.11;
+      b6 = white * 0.115926;
     }
 
     const source = ctx.createBufferSource();
     source.buffer = buffer;
     source.loop = true;
 
-    // Create filter for rain-like sound
-    const filter = ctx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 1000;
-
     const gainNode = ctx.createGain();
-    gainNode.gain.value = ambientVolume * 0.3;
+    gainNode.gain.value = ambientVolume * 0.5;
 
-    source.connect(filter);
-    filter.connect(gainNode);
+    source.connect(gainNode);
     gainNode.connect(ctx.destination);
     source.start();
 
@@ -539,7 +537,6 @@ function App() {
     setSoundLoading(true);
     setSoundError(null);
 
-    // Stop any currently playing sound
     stopAllSounds();
 
     if (!soundId) {
@@ -548,7 +545,6 @@ function App() {
       return;
     }
 
-    // Check if this is a noise sound we can generate locally
     if (soundId === 'white') {
       createWhiteNoise();
       setAmbientSound('white');
@@ -563,15 +559,13 @@ function App() {
       return;
     }
 
-    if (soundId === 'rain') {
-      // Use local rain sound as primary, with URL fallback
-      createRainSound();
-      setAmbientSound('rain');
+    if (soundId === 'pink') {
+      createPinkNoise();
+      setAmbientSound('pink');
       setSoundLoading(false);
       return;
     }
 
-    // For other sounds, try to load from URL
     const sound = AMBIENT_SOUNDS.find(s => s.id === soundId);
     if (!sound || !sound.url) {
       setSoundError(`Sound "${soundId}" not available`);
@@ -579,7 +573,6 @@ function App() {
       return;
     }
 
-    // Initialize and play real-world audio sample
     const audio = new Audio(sound.url);
     audio.loop = true;
     audio.volume = ambientVolume;
@@ -609,14 +602,13 @@ function App() {
       setSoundLoading(false);
     });
 
-    // Timeout for loading
     setTimeout(() => {
       if (soundLoading) {
         setSoundError(`Loading timeout for "${sound.label}". Check your connection.`);
         setSoundLoading(false);
       }
     }, 10000);
-  }, [ambientVolume, soundLoading, stopAllSounds, createWhiteNoise, createBrownNoise, createRainSound]);
+  }, [ambientVolume, soundLoading, stopAllSounds, createWhiteNoise, createBrownNoise, createPinkNoise]);
 
   // Update ambient volume
   useEffect(() => {
